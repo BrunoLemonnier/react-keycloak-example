@@ -1,11 +1,10 @@
 import { useEffect, useRef } from 'react';
 import axios from 'axios';
-import type { AxiosInstance } from 'axios';
 
 import { useKeycloak } from '@react-keycloak/web';
 
-export const useAxios = (baseURL: string) => {
-  const axiosInstance = useRef<AxiosInstance>();
+export const useAxios = (baseURL) => {
+  const axiosInstance = useRef();
   const { keycloak, initialized } = useKeycloak();
   const kcToken = keycloak?.token ?? '';
 

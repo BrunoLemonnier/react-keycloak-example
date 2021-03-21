@@ -5,7 +5,7 @@ import { Redirect, useLocation } from 'react-router-dom'
 import { useKeycloak } from '@react-keycloak/web'
 
 const LoginPage = () => {
-  const location = useLocation<{ [key: string]: unknown }>()
+  const location = useLocation()
   const currentLocationState = location.state || {
     from: { pathname: '/home' },
   }
@@ -13,11 +13,11 @@ const LoginPage = () => {
   const { keycloak } = useKeycloak()
 
   const login = useCallback(() => {
-    keycloak?.login()
+    keycloak && keycloak.login()
   }, [keycloak])
 
   if (keycloak?.authenticated)
-    return <Redirect to={currentLocationState?.from as string} />
+    return <Redirect to={currentLocationState?.from} />
 
   return (
     <div>

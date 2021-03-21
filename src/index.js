@@ -1,19 +1,19 @@
 import * as React from 'react'
 import ReactDOM from 'react-dom'
+import reportWebVitals from './reportWebVitals';
 
 import { ReactKeycloakProvider } from '@react-keycloak/web'
 
 import keycloak from './keycloak'
 import { AppRouter } from './routes'
-import * as serviceWorker from './serviceWorker'
 
 import './index.css'
 
-const eventLogger = (event: unknown, error: unknown) => {
+const eventLogger = (event, error) => {
   console.log('onKeycloakEvent', event, error)
 }
 
-const tokenLogger = (tokens: unknown) => {
+const tokenLogger = (tokens) => {
   console.log('onKeycloakTokens', tokens)
 }
 
@@ -30,7 +30,7 @@ ReactDOM.render(
   document.getElementById('root')
 )
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister()
+// If you want to start measuring performance in your app, pass a function
+// to log results (for example: reportWebVitals(console.log))
+// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+reportWebVitals();
